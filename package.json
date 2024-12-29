@@ -22,6 +22,7 @@
   "devDependencies": {
     "@aws-amplify/backend": "^1.5.0",
     "@aws-amplify/backend-cli": "^1.2.9",
+    "@rollup/plugin-inject": "^5.0.5",
     "@types/jquery": "^3.5.32",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
