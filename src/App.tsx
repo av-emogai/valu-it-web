@@ -15,8 +15,8 @@ import "./assets/js/bootstrap.min.js";
 
 import "./contactme/js/weakmap-polyfill.min.js";
 import "./contactme/js/formdata.min.js";
-import "./contactme/js/bootstrap-datepicker.min.js";
-import "./contactme/js/bootstrap-datepicker-lang/en.js";
+//import "./contactme/js/bootstrap-datepicker.min.js";
+//import "./contactme/js/bootstrap-datepicker-lang/en.js";
 import "./contactme/js/jquery.timepicker.min.js";
 		//<!--[if lt IE 9]><script src="contactme/js/EQCSS-polyfills-1.7.0.min.js"></script><![endif]-->
 import "./contactme/js/select2.full.min.js";
