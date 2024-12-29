@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import compression from "vite-plugin-compression";
 import inject from "@rollup/plugin-inject";
-import legacy from '@rollup/plugin-legacy';
+import legacy from '@vitejs/plugin-legacy';
 
 // https://vitejs.dev/config/
 export default defineConfig({
