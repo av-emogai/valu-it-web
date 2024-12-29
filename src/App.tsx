@@ -68,7 +68,8 @@ function App() {
      
      return () => clearInterval(timer);
    }, []);//~useEffect
-
+  
+  
    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevent the default form submission behavior
 
@@ -179,7 +180,7 @@ function App() {
                     <option value="Owner">Business Owner</option>
 										<option value="Investor">Investor</option>
 										<option value="Elite">Elite Owner/Investor</option>
-							 </select>
+              </select>
             </div>
              <div className="msg">{message}</div>
              <button className="btn" type="submit" data-sending="Sending...">Notify me!</button>
@@ -210,6 +211,6 @@ function App() {
 		</section>
     </div>
   );//~return
-  }; //~App
+  } //~App
 
 export default App;
