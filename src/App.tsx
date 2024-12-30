@@ -41,6 +41,7 @@ const calculateTimeLeft = () => {
 function App() {
  const [message, setMessage] = useState<string | null>(null);
  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+ const [isMsgVisible, setIsMsgVisible] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -77,8 +78,9 @@ function App() {
     addToWaitlist(data);
 
     // Set the thank-you message
-    setMessage("Thank you, ${data.username}, we will keep you posted!");
-    console.log("Message: ${message}"); // Check if Waitlist is defined
+    setMessage("Thank you, "+formData.get("username")+", we will keep you posted!");
+    setIsMsgVisible(true); // Make the message visible
+    console.log("Message:",message); // Check if Waitlist is defined
 
   }; //~handleSubmit
 
@@ -175,8 +177,8 @@ function App() {
 										<option value="Elite">Elite Owner/Investor</option>
               </select>
             </div>
-             <div className="msg">{message}</div>
              <button className="btn" type="submit" data-sending="Sending...">Notify me!</button>
+             <div className="msg" style={{ display: isMsgVisible ? "block" : "none" }} >{message}</div>
              </section>
           </form>
           </div>
