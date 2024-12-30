@@ -15,8 +15,6 @@ import "./assets/js/bootstrap.min.js";
 
 import "./contactme/js/weakmap-polyfill.min.js";
 import "./contactme/js/formdata.min.js";
-//import "./contactme/js/bootstrap-datepicker.min.js";
-//import "./contactme/js/bootstrap-datepicker-lang/en.js";
 import "./contactme/js/jquery.timepicker.min.js";
 		//<!--[if lt IE 9]><script src="contactme/js/EQCSS-polyfills-1.7.0.min.js"></script><![endif]-->
 import "./contactme/js/select2.full.min.js";
@@ -25,56 +23,44 @@ import "./assets/js/jonny-1.2.js";
 import "./contactme/js/EQCSS-1.7.0.js";//Needs to come after select2
 import "./contactme/js/contactme-1.4.js";//Needs to come after select2
 
+const countdownDate = new Date("2025-03-10T09:00:00").getTime();
+const calculateTimeLeft = () => {
+  const now = new Date().getTime();
+  const difference = countdownDate - now;
+
+  const timeLeft = {
+    days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+    hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+    minutes: Math.floor((difference / 1000 / 60) % 60),
+    seconds: Math.floor((difference / 1000) % 60),
+  };
+  return timeLeft;
+};//~calculateTimeLeft
+
 
 function App() {
-  const countdownDate = new Date("2025-03-10T09:00:00").getTime();
   const [message, setMessage] = useState<string | null>(null);
-
-  const calculateTimeLeft = () => {
-    const now = new Date().getTime();
-    const difference = countdownDate - now;
-
-    const timeLeft = {
-      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-      minutes: Math.floor((difference / 1000 / 60) % 60),
-      seconds: Math.floor((difference / 1000) % 60),
-    };
-    return timeLeft;
-  };//~calculateTimeLeft
-
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-
-  // useEffect(() => {
-  //   client.models.Todo.observeQuery().subscribe({
-  //     next: (data) => setTodos([...data.items]),
-  //   });
-  // }, []);
+ const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   useEffect(() => {
-
     const timer = setInterval(() => {
      setTimeLeft(calculateTimeLeft());
     }, 1000);
     // Initialize Select2 dropdowns
-   (window as any).$ = $; // Ensure jQuery is globally available
-   (window as any).jQuery = $;
-   $(".contactMe select").select2({
+    $(".contactMe select").select2({
      minimumResultsForSearch: -1,
      placeholder: "Kind of pass",
      allowClear: true,
    });
-
-     
      return () => clearInterval(timer);
    }, []);//~useEffect
   
   
    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevent the default form submission behavior
-
     // Get the form data
     const formData = new FormData(event.currentTarget);
+    console.log("Form submitted for:"+formData.get("email"));  
     const data = {
       username: formData.get("username") as string,
       email: formData.get("email") as string,
