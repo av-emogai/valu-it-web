@@ -60,6 +60,11 @@ function App() {
     event.preventDefault(); // Prevent the default form submission behavior
     // Get the form data
     const formData = new FormData(event.currentTarget);
+    //ensure Models are initialized.
+    console.log("Client:", client); // Check if client is initialized
+    console.log("Models:", client.models); // Check if models exist
+    console.log("Waitlist Model:", client.models?.Waitlist); // Check if Waitlist is defined
+
     console.log("Form submitted for:"+formData.get("email"));  
     const data = {
       username: formData.get("username") as string,
