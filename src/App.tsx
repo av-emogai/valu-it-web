@@ -39,7 +39,7 @@ const calculateTimeLeft = () => {
 
 
 function App() {
-  const [message, setMessage] = useState<string | null>(null);
+ const [message, setMessage] = useState<string | null>(null);
  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   useEffect(() => {
@@ -65,7 +65,7 @@ function App() {
     console.log("Models:", client.models); // Check if models exist
     console.log("Waitlist Model:", client.models?.Waitlist); // Check if Waitlist is defined
 
-    console.log("Form submitted for:"+formData.get("email"));  
+    console.log("Form submitted for:",formData.get("email"));  
     const data = {
       username: formData.get("username") as string,
       email: formData.get("email") as string,
@@ -77,7 +77,9 @@ function App() {
     addToWaitlist(data);
 
     // Set the thank-you message
-    setMessage("Thank you, we will keep you posted!");
+    setMessage("Thank you, ${data.username}, we will keep you posted!");
+    console.log("Message: ${message}"); // Check if Waitlist is defined
+
   }; //~handleSubmit
 
   const addToWaitlist = (data: {
